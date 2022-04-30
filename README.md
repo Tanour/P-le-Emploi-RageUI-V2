@@ -10,3 +10,12 @@ Si vous avez des suggestions de scripts que je pourrais faire, des retours ou au
 
 Preview : https://www.youtube.com/watch?v=-cZXDG8Oz-c
 Discord : https://discord.gg/PKHRT8pQC4
+
+Comment l'installer ?
+
+- Mettre le dossier tanour_PoleEmploi dans votre dossier resources
+- Puis Server.cfg ensure/start tanour_PoleEmploi
+- Enfin insères le sql dans ta BDD
+- Restart ton serveur
+
+Enjoy ✨
