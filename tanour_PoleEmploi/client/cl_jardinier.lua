@@ -123,6 +123,7 @@ JardinierRecolte.Display.Header = true
 JardinierRecolte.Closed = function ()
     open = false
     SetPlayerControl(PlayerId(), true, 12)
+    StopRecolte()
 end
 
 function TanourJardinierRecolte()
@@ -132,7 +133,6 @@ function TanourJardinierRecolte()
         return
     else
         open = true
-        SetPlayerControl(PlayerId(), false, 12)
         RageUI.Visible(JardinierRecolte, true)
         CreateThread(function ()
             while open do
@@ -144,6 +144,7 @@ function TanourJardinierRecolte()
                             lock = true
                             local playerPed = PlayerPedId()
                             TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_GARDENER_PLANT', 0, true)
+                            SetPlayerControl(PlayerId(), false, 12)                
                             StartRecolte()
                             ClearGpsMultiRoute()
                             Citizen.SetTimeout(1000, function()
@@ -153,8 +154,9 @@ function TanourJardinierRecolte()
                     })
                 end
                     RageUI.Button("Stopper la récolte", nil, {RightLabel = "~b~→→"}, true, {
-                        onSelected = function ()
+                        onSelected = function ()                
                         StopRecolte()
+                        SetPlayerControl(PlayerId(), true, 12)
                         local playerPed = PlayerPedId()
                         ClearPedTasksImmediately(playerPed)
                         end
